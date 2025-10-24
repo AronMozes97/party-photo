@@ -9,5 +9,5 @@
     </head>
     <body>
         {{ $slot }}
-    </body>
+    </body>asd
 </html>
