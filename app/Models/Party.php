@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 
 class Party extends Model
 {
+    public const STATUS_ACTIVE = 1;
+
     protected $fillable = [
         'name',
         'owner_user_id',

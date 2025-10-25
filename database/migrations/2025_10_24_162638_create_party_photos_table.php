@@ -16,9 +16,7 @@ return new class extends Migration
             $table->foreignId('party_id')->constrained()->cascadeOnDelete();
             $table->foreignId('member_id')->constrained('party_members')->cascadeOnDelete();
             $table->string('image_path');
-            $table->text('prompt')->nullable();
-            $table->string('type')->default('photo'); // vagy selfie / ai_edit / upload
-            $table->string('status')->default('active'); // active / hidden / deleted
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
 

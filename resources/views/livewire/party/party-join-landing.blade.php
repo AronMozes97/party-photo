@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <form wire:submit.prevent="joinParty" class="space-y-4">
+    <form @if(session('party_member_id')) wire:submit.prevent="startParty" @else wire:submit.prevent="joinParty" @endif class="space-y-4">
         <div>
             <label for="name" class="block text-sm font-medium text-gray-700">Neved</label>
             <input type="text"
@@ -24,10 +24,18 @@
             @enderror
         </div>
 
-        <button type="submit"
-                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg transition">
-            Csatlakozás
-        </button>
+        @if(session('party_member_id'))
+            <button type="submit"
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg transition">
+                Belépés
+            </button>
+        @else
+            <button type="submit"
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg transition">
+                Csatlakozás
+            </button>
+        @endif
+
     </form>
 
     {{-- Debug info, ha fejlesztéshez jól jön --}}

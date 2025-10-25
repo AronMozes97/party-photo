@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class PartyPhoto extends Model
 {
+    public const STATUS_ACTIVE = 1;
+
     protected $fillable = [
         'party_id',
         'member_id',
         'image_path',
-        'prompt',
-        'type',
         'status',
     ];
 

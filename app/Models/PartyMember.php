@@ -13,6 +13,7 @@ class PartyMember extends Model
         'party_id',
         'user_id',
         'name',
+        //note jo lesz majd a sharingre, ez alapjan tudja megosztani, a kepeket nem kell Id-ket leakelni
         'code',
         'joined_at',
         'last_seen_at'
