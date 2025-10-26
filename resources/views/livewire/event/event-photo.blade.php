@@ -1,4 +1,4 @@
-{{-- resources/views/livewire/party-photo.blade.php --}}
+{{-- resources/views/livewire/event-photo.blade.php --}}
 <div class="space-y-4">
     <div class="flex gap-4 flex-wrap">
         <div class="w-72">

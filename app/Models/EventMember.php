@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
-class PartyMember extends Model
+/**
+ * @mixin IdeHelperEventMember
+ */
+class EventMember extends Model
 {
     protected $fillable = [
-        'party_id',
+        'event_id',
         'user_id',
         'name',
         //note jo lesz majd a sharingre, ez alapjan tudja megosztani, a kepeket nem kell Id-ket leakelni
@@ -28,9 +31,9 @@ class PartyMember extends Model
         });
     }
 
-    public function party(): BelongsTo
+    public function event(): BelongsTo
     {
-        return $this->belongsTo(Party::class);
+        return $this->belongsTo(Event::class);
     }
 
     public function user(): BelongsTo
@@ -40,7 +43,7 @@ class PartyMember extends Model
 
     public function photos(): HasMany
     {
-        return $this->hasMany(PartyPhoto::class, 'member_id');
+        return $this->hasMany(EventPhoto::class, 'member_id');
     }
 
     public function isRegistered(): bool

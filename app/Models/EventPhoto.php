@@ -3,29 +3,33 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class PartyPhoto extends Model
+/**
+ * @mixin IdeHelperEventPhoto
+ */
+class EventPhoto extends Model
 {
     public const STATUS_ACTIVE = 1;
 
     protected $fillable = [
-        'party_id',
+        'event_id',
         'member_id',
         'image_path',
         'status',
     ];
 
-    public function party()
+    public function event(): BelongsTo
     {
-        return $this->belongsTo(Party::class);
+        return $this->belongsTo(Event::class);
     }
 
-    public function member()
+    public function member(): BelongsTo
     {
-        return $this->belongsTo(PartyMember::class, 'member_id');
+        return $this->belongsTo(EventMember::class, 'member_id');
     }
 
-    public function scopeActive($query)
+    public function scopeActive($query): EventPhoto
     {
         return $query->where('status', 'active');
     }

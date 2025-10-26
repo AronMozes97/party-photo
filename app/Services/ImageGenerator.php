@@ -21,7 +21,7 @@ class ImageGenerator
     {
         $prompt =
         <<<TXT
-            Transform this selfie into a friendly, fun {$theme} party photo with vibrant, realistic lighting and natural skin rendering.
+            Transform this selfie into a friendly, fun {$theme} event photo with vibrant, realistic lighting and natural skin rendering.
 
             Identity preservation (critical):
             - Keep the exact facial identity and geometry unchanged.
@@ -30,12 +30,12 @@ class ImageGenerator
             - No face reshaping, no smoothing/beauty filters.
 
             Styling:
-            - Add {$theme} party elements (props, decor, ambient lights) around the subject, not on the face.
+            - Add {$theme} event elements (props, decor, ambient lights) around the subject, not on the face.
             - Maintain the original pose and camera angle.
             - Photorealistic finish, no painterly or cartoon artifacts.
 
             Lighting & color:
-            - Enhance lighting to feel like a lively party (neon/LED accents), but keep the face neutrally lit and true-to-life.
+            - Enhance lighting to feel like a lively event (neon/LED accents), but keep the face neutrally lit and true-to-life.
             - Avoid color cast on the skin.
 
             Composition:
@@ -46,7 +46,7 @@ class ImageGenerator
             - No face deformation, no plastic skin, no makeup changes, no eye enlargement, no jawline edits.
             - No blur on the face, no excessive smoothing, no AI-art textures.
 
-            Output: a single photorealistic party photo at high quality.
+            Output: a single photorealistic event photo at high quality.
         TXT;
 
 

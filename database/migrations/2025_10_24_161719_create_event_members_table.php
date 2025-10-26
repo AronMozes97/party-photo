@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('party_members', function (Blueprint $table) {
+        Schema::create('event_members', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('party_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('event_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('name')->nullable();
             $table->string('code', 8)->unique();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('party_members');
+        Schema::dropIfExists('event_members');
     }
 };

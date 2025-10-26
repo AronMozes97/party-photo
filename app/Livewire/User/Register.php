@@ -3,7 +3,7 @@
 namespace App\Livewire\User;
 
 use App\Models\User;
-use App\Models\PartyMember as PartyMemberModel;
+use App\Models\EventMember as PartyMemberModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
@@ -22,8 +22,8 @@ class Register extends Component
     {
         $this->user = new User();
 
-        if (session()->has('party_member_id')) {
-            $this->name = PartyMemberModel::where('id', session()->get('party_member_id'))->first()?->name;
+        if (session()->has('event_member_id')) {
+            $this->name = PartyMemberModel::where('id', session()->get('event_member_id'))->first()?->name;
         }
     }
 
@@ -40,8 +40,6 @@ class Register extends Component
             'email'    => $this->email,
             'password' => Hash::make($this->password),
         ]);
-
-        $this->user->assignRole('user');
 
         Auth::login($this->user);
 

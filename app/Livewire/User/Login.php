@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -11,6 +12,12 @@ class Login extends Component
     public ?string $password = null;
 
     public bool $remember = true;
+
+    public function mount(): void
+    {
+        $this->email = 'aron.mozes97@gmail.com';
+        $this->password = env('ADMIN_PASSWORD');
+    }
 
     public function login(): void
     {
@@ -26,11 +33,11 @@ class Login extends Component
 
         session()->regenerate();
 
-        $this->redirect(route('dashboard'));
+        $this->redirectIntended(route('dashboard'));
     }
 
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.user.login');
     }

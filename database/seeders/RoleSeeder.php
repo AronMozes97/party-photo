@@ -18,6 +18,6 @@ class RoleSeeder extends Seeder
         $admin = Role::create(['name' => RoleEnum::ADMIN->value]);
         $user = Role::create(['name' => RoleEnum::USER->value]);
 
-        #$admin->givePermissionTo(Permission::all());
+        $admin->givePermissionTo(Permission::all());
     }
 }

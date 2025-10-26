@@ -3,10 +3,10 @@
 
     <div class="bg-gray-100 p-4 rounded-lg mb-4">
         <p class="mb-2">
-            <strong>Party name:</strong> {{ $party->name }}
+            <strong>Party name:</strong> {{ $event->name }}
         </p>
         <p class="mb-2 text-sm text-gray-500">
-            Expires at: {{ optional($party->expires_at)->format('Y-m-d H:i') }}
+            Expires at: {{ optional($event->expires_at)->format('Y-m-d H:i') }}
         </p>
     </div>
 

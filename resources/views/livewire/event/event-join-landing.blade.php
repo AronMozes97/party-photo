@@ -2,7 +2,7 @@
     <h1 class="text-2xl font-bold mb-4 text-center">Csatlakozás a partyhoz 🎉</h1>
 
     <p class="text-gray-600 text-center mb-6">
-        Party neve: <strong>{{ $party->name ?? 'Ismeretlen party' }}</strong>
+        Party neve: <strong>{{ $event->name ?? 'Ismeretlen event' }}</strong>
     </p>
     {{-- Sikeres mentés üzenet --}}
     @if (session('success'))
@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <form @if(session('party_member_id')) wire:submit.prevent="startParty" @else wire:submit.prevent="joinParty" @endif class="space-y-4">
+    <form @if(session('event_member_id')) wire:submit.prevent="joinEvent" @else wire:submit.prevent="joinEvent" @endif class="space-y-4">
         <div>
             <label for="name" class="block text-sm font-medium text-gray-700">Neved</label>
             <input type="text"
@@ -24,7 +24,7 @@
             @enderror
         </div>
 
-        @if(session('party_member_id'))
+        @if(session('event_member_id'))
             <button type="submit"
                     class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg transition">
                 Belépés
@@ -40,8 +40,8 @@
 
     {{-- Debug info, ha fejlesztéshez jól jön --}}
     <div class="mt-6 text-sm text-gray-500">
-        <p><strong>Party ID:</strong> {{ $party->id }}</p>
+        <p><strong>Party ID:</strong> {{ $event->id }}</p>
         <p><strong>Member ID:</strong> {{ $member->id }}</p>
-        <p><strong>Token:</strong> {{ $party->join_token }}</p>
+        <p><strong>Token:</strong> {{ $event->join_token }}</p>
     </div>
 </div>

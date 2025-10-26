@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Livewire\Party;
+namespace App\Livewire\Event;
 
-use App\Models\PartyMember as PartyMemberModel;
+use App\Models\EventMember as EventMemberModel;
 use App\Services\ImageGenerator;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use App\Models\PartyPhoto as PartyPhotoModel;
+use App\Models\EventPhoto as EventPhotoModel;
 
-class PartyPhoto extends Component
+class EventPhoto extends Component
 {
     use WithFileUploads;
 
@@ -20,11 +20,11 @@ class PartyPhoto extends Component
     public ?string $generatedUrl = null;
     public bool $busy = false;
 
-    public ?PartyMemberModel $member = null;
+    public ?EventMemberModel $member = null;
 
     public function render()
     {
-        return view('livewire.party.party-photo');
+        return view('livewire.event.event-photo');
     }
 
     public function saveAndGenerate(ImageGenerator $aiImageService) {
@@ -38,13 +38,13 @@ class PartyPhoto extends Component
         $this->generatedUrl = $aiImageService->generateFromSelfie($absolutePath, $this->theme);
 
         if (!$this->member) {
-            $this->member = PartyMemberModel::where('party_id', session()->get('party_id'))
-            ->where('code', session()->get('party_member_code'))
+            $this->member = EventMemberModel::where('event_id', session()->get('event_id'))
+            ->where('code', session()->get('event_member_code'))
             ->first();
         }
 
-        PartyPhotoModel::create([
-            'party_id' => session()->get('party_id'),
+        EventPhotoModel::create([
+            'event_id' => session()->get('event_id'),
             'member_id' => $this->member->id,
             'image_path' => $this->generatedUrl,
         ]);

@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('parties', function (Blueprint $table) {
+        Schema::create('event_photos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('owner_user_id')->nullable()->constrained('users')->nullOnDelete();
-            $table->uuid('join_token')->unique();
-            $table->timestamp('expires_at')->nullable();
-            $table->integer('status')->default(0);
+            $table->foreignId('event_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('member_id')->constrained('event_members')->cascadeOnDelete();
+            $table->string('image_path');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('parties');
+        Schema::dropIfExists('event_photos');
     }
 };

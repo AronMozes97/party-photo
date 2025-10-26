@@ -8,7 +8,7 @@ use Illuminate\View\Component;
 
 class Nav extends Component
 {
-    public string $APP_NAME = 'Party Photo';
+    public string $APP_NAME = 'Event Photo';
     /**
      * Create a new component instance.
      */

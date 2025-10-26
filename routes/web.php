@@ -8,25 +8,25 @@ use App\Http\Controllers\PartyJoinController;
 use App\Http\Controllers\UserController;
 use App\Livewire\Admin\CreateEvent;
 use App\Livewire\Dashboard;
-use App\Livewire\Party\PartyGallery;
-use App\Livewire\Party\PartyIndex;
-use App\Livewire\Party\PartyJoinLanding;
-use App\Livewire\Party\PartyPhoto;
+use App\Livewire\Event\EventGallery;
+use App\Livewire\Event\EventIndex;
+use App\Livewire\Event\EventJoinLanding;
+use App\Livewire\Event\EventPhoto;
 use App\Livewire\User\Login;
 use App\Livewire\User\Register;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Dashboard::class)->name('dashboard');
 
-// Party join routes ->
-Route::get('/event/party/join/{token}', PartyIndex::class)->name('party.index');
-Route::get('/join/{token}', PartyJoinLanding::class)->name('party.join');
+// Event join routes ->
+Route::get('/event/event/join/{token}', EventIndex::class)->name('event.index');
+Route::get('/join/{token}', EventJoinLanding::class)->name('event.join');
 
-// Party photo routes ->
-Route::get('/event/photo/create', PartyPhoto::class)->name('party.photo.create');
+// Event photo routes ->
+Route::get('/event/photo/create', EventPhoto::class)->name('event.photo.create');
 
-// Party gallery routes ->
-Route::get('/event/gallery', PartyGallery::class)->name('party.gallery');
+// Event gallery routes ->
+Route::get('/event/gallery', EventGallery::class)->name('event.gallery');
 
 //User routes ->
 Route::get('user/register', Register::class)->name('user.register');
