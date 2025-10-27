@@ -14,5 +14,9 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         Permission::create(['name' => PermissionEnum::CREATE_EVENT->value]);
+        Permission::create(['name' => PermissionEnum::LIST_EVENTS->value]);
+        Permission::create(['name' => PermissionEnum::VIEW_EVENT->value]);
+        Permission::create(['name' => PermissionEnum::UPDATE_EVENT->value]);
+        Permission::create(['name' => PermissionEnum::DELETE_EVENT->value]);
     }
 }

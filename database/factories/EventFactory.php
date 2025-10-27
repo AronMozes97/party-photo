@@ -1,0 +1,36 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Event;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event>
+ */
+class EventFactory extends Factory
+{
+    protected $model = Event::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        $startAt = $this->faker->dateTimeBetween('+1 days', '+10 days');
+        $expireAt = (clone $startAt)->modify('+'.rand(1, 5).' days');
+
+        return [
+            'name' => $this->faker->sentence(3),
+            'owner_user_id' => User::inRandomOrder()->first()->id,
+            'join_token' => Str::uuid(),
+            'start_at' => $startAt,
+            'expire_at' => $expireAt,
+            'status' => Event::STATUS_INACTIVE,
+        ];
+    }
+}

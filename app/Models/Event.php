@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\RoleEnum;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -17,6 +18,8 @@ use Illuminate\Support\Str;
  */
 class Event extends Model
 {
+    use HasFactory;
+
     public const STATUS_INACTIVE = 0;
     public const STATUS_ACTIVE = 1;
     public const STATUS_ENDED = 2;

@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\Event;
 
 use App\Enums\RoleEnum;
-use App\Models\Event;
+use App\Models\Event as EventModel;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
-use Livewire\Component;
 use Illuminate\Support\Collection;
-use App\Models\Event as EventModel;
+use Livewire\Component;
 
-class CreateEvent extends Component
+class Create extends Component
 {
     public ?string $name = null;
     public ?int $owner_user_id = null;
@@ -42,12 +41,12 @@ class CreateEvent extends Component
             'start_at'      => $this->start_at,
             'owner_user_id' => $this->owner_user_id,
             'expire_at'     => $expire_at,
-            'status'        => Event::STATUS_INACTIVE,
+            'status'        => EventModel::STATUS_INACTIVE,
         ]);
     }
 
     public function render(): View
     {
-        return view('livewire.admin.create-event');
+        return view('livewire.admin.event.create');
     }
 }

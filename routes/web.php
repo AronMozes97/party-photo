@@ -2,11 +2,10 @@
 
 use App\Enums\PermissionEnum;
 use App\Enums\RoleEnum;
-use App\Http\Controllers\PartyJoinController;
-
-
 use App\Http\Controllers\UserController;
-use App\Livewire\Admin\CreateEvent;
+use App\Livewire\Admin\Event\Create;
+use App\Livewire\Admin\Event\Index;
+use App\Livewire\Admin\Event\Show;
 use App\Livewire\Dashboard;
 use App\Livewire\Event\EventGallery;
 use App\Livewire\Event\EventIndex;
@@ -15,6 +14,7 @@ use App\Livewire\Event\EventPhoto;
 use App\Livewire\User\Login;
 use App\Livewire\User\Register;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', Dashboard::class)->name('dashboard');
 
@@ -42,7 +42,16 @@ Route::middleware(['auth', RoleEnum::ADMIN->getMiddleware()])
     ->name('admin.')
     ->group(function () {
 
-        Route::get('admin/create/event', CreateEvent::class)
-            ->name('create.event')
+        // Event routes ->
+        Route::get('/events', Index::class)
+            ->name('event.index')
+            ->middleware(PermissionEnum::LIST_EVENTS->getMiddleware());
+
+        Route::get('admin/event/create', Create::class)
+            ->name('event.create')
             ->middleware(PermissionEnum::CREATE_EVENT->getMiddleware());
+
+        Route::get('admin/event/{event}/show', Show::class)
+            ->name('event.show')
+            ->middleware(PermissionEnum::LIST_EVENTS->getMiddleware());
     });
