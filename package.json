@@ -9,12 +9,13 @@
     "devDependencies": {
         "axios": "^1.11.0",
         "concurrently": "^9.0.1",
-        "laravel-vite-plugin": "^2.0.1",
         "vite": "^7.1.12"
     },
     "dependencies": {
+        "@popperjs/core": "^2.11.8",
         "@tailwindcss/vite": "^4.1.16",
         "@tailwindplus/elements": "^1.0.18",
-        "tailwindcss": "^4.1.16"
+        "bootstrap": "^5.3.8",
+        "laravel-vite-plugin": "^2.0.1"
     }
 }

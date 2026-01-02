@@ -6,7 +6,6 @@
 
         @vite('resources/css/app.css')
         @vite('resources/js/app.js')
-        @livewireStyles
         <title>{{ $title ?? 'Page Title' }}</title>
     </head>
     <body>
@@ -14,10 +13,8 @@
         <x-layouts.nav/>
 
         {{-- Content --}}
-        <main class="container mx-auto mt-6">
+        <main class="container py-4">
             {{ $slot }}
         </main>
-
-        @livewireScripts
     </body>
 </html>

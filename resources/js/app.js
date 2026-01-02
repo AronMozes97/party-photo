@@ -1,2 +1,2 @@
 import './bootstrap';
-import '@tailwindplus/elements'
+import 'bootstrap';
